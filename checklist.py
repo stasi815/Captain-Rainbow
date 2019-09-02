@@ -48,8 +48,8 @@ def mark_completed(index):
 # User Input
 def select(function_code):
     """User selection code."""
-    # Create item
-    if function_code == "C":
+    # Append item
+    if function_code == "A":
         input_item = user_input("Append item: ")
         create(input_item)
 
@@ -58,6 +58,12 @@ def select(function_code):
         item_index = user_input("Index Number?: ")
     # Remember that item_index must actually exist or our program will crash.
         read(item_index)
+
+    # User UPDATE
+    elif function_code == "U":
+        item_index = user_input("Index Number?: ")
+        input_item = user_input("Input Item: ")
+        update(item_index, input_item)
 
     # Delete item
     elif function_code == "D":
@@ -70,7 +76,7 @@ def select(function_code):
 
     # Catch all
     else:
-        print("Unknown Option")
+        print("Unknown Option. Choose from list of approved actions.")
 
 
 def user_input(prompt):
