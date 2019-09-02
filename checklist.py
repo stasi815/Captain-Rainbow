@@ -1,5 +1,6 @@
 """Checklist."""
 # Created Checklist
+# Jessica Trinh helped with int(index) and mark_completed
 checklist = list()
 
 
@@ -19,13 +20,13 @@ def read(index):
 # UPDATE
 def update(index, item):
     """Update code."""
-    checklist[index] = item
+    checklist[int(index)] = str(item)
 
 
 # DESTROY
 def destroy(index):
     """Delete code."""
-    checklist.pop(index)
+    checklist.pop(int(index))
 
 
 # LIST
@@ -41,27 +42,27 @@ def list_all_items():
 def mark_completed(index):
     """My code here."""
     # Add code here that marks an item as completed
-    item = checklist[index]
-    return "√" + item
-    index = 0
-    for checked_item in checklist:
-        print("{} {}".format(index, checked_item))
-        index += 1
+    checklist[int(index)] = "{} {}".format("√", checklist[int(index)])
 
 
+# User Input
 def select(function_code):
     """User selection code."""
     # Create item
     if function_code == "C":
-        input_item = user_input("Input item:")
+        input_item = user_input("Append item: ")
         create(input_item)
 
     # Read item
     elif function_code == "R":
-        item_index = user_input("Index Number?")
-
+        item_index = user_input("Index Number?: ")
     # Remember that item_index must actually exist or our program will crash.
         read(item_index)
+
+    # Delete item
+    elif function_code == "D":
+        item_index = user_input("Index Number?: ")
+        destroy(item_index)
 
     # Print all items
     elif function_code == "P":
