@@ -1,7 +1,50 @@
 """Checklist."""
 # Created Checklist
-# Jessica Trinh helped with int(index) and mark_completed
+# Jessica Trinh helped me make int(index), mark_completed,
+# and uppercase variable
 checklist = list()
+
+
+# From https://www.geeksforgeeks.org/print-colors-python-terminal/
+# Python program to print colored text and background
+def prRed(skk):
+    """Red."""
+    return("\033[91m {}\033[00m" .format(skk))
+
+
+def prGreen(skk):
+    """Green."""
+    return("\033[92m {}\033[00m" .format(skk))
+
+
+def prYellow(skk):
+    """Yellow."""
+    return("\033[93m {}\033[00m" .format(skk))
+
+
+def prLightPurple(skk):
+    """Light Purple."""
+    return("\033[94m {}\033[00m" .format(skk))
+
+
+def prPurple(skk):
+    """Purple."""
+    return("\033[95m {}\033[00m" .format(skk))
+
+
+def prCyan(skk):
+    """Cyan."""
+    return("\033[96m {}\033[00m" .format(skk))
+
+
+def prLightGray(skk):
+    """Light Gray."""
+    return("\033[97m {}\033[00m" .format(skk))
+
+
+def prBlack(skk):
+    """Black."""
+    return("\033[98m {}\033[00m" .format(skk))
 
 
 # Define Functions
@@ -33,7 +76,7 @@ def list_all_items():
     """List all items in code."""
     index = 0
     for list_item in checklist:
-        print("{} {}".format(index, list_item))
+        print(prPurple("{} {}".format(index, list_item)))
         index += 1
 
 
@@ -44,34 +87,34 @@ def mark_completed(index):
     checklist[int(index)] = "{} {}".format("√", checklist[int(index)])
 
 
-# User Selection Input
+# Select Functions
 def select(function_code):
     """User selection code."""
     # Append item
     if function_code == "A":
-        input_item = user_input("Append item: ")
+        input_item = user_input(prGreen('Add item.: '))
         create(input_item)
 
     # Read item
     elif function_code == "R":
-        item_index = user_input("Index Number?: ")
+        item_index = user_input(prGreen('Index Number?: '))
     # Remember that item_index must actually exist or our program will crash.
         read(item_index)
 
     # User UPDATE
     elif function_code == "U":
-        item_index = user_input("Index Number?: ")
+        item_index = user_input(prGreen('Index Number?: '))
         input_item = user_input("Input Item: ")
         update(item_index, input_item)
 
     # Mark list item with check
     elif function_code == "C":
-        item_index = user_input("Index Number?: ")
+        item_index = user_input(prGreen('Index Number?: '))
         mark_completed(item_index)
 
     # Delete item
     elif function_code == "D":
-        item_index = user_input("Index Number?: ")
+        item_index = user_input(prGreen('Index Number?: '))
         destroy(item_index)
 
     # Print all items
@@ -95,8 +138,8 @@ def user_input(prompt):
     # and wait for user input.
     user_input = input(prompt)
     return user_input
-    user_value = user_input("Please Enter a value:")
-    print(user_value)
+    # user_value = user_input("Please Enter a value:")
+    # print(user_value)
 
 
 # TEST
@@ -143,6 +186,7 @@ def user_input(prompt):
 
 running = True
 while running:
-    selection = user_input(
-        "Press:A=add;C=checkitem;U=update;D=delete;R=read;P=full list;Q=quit ")
-    running = select(selection)
+    selection = user_input(prCyan(
+        "Press:A=add; C=checkitem; U=update; D=delete; R=read;P=list;Q=quit "))
+    selection_lowerAndUpper = selection.upper()
+    running = select(selection_lowerAndUpper)
