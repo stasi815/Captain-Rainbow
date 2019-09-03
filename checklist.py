@@ -64,6 +64,11 @@ def select(function_code):
         input_item = user_input("Input Item: ")
         update(item_index, input_item)
 
+    # Mark list item with check
+    elif function_code == "C":
+        item_index = user_input("Index Number?: ")
+        mark_completed(item_index)
+
     # Delete item
     elif function_code == "D":
         item_index = user_input("Index Number?: ")
@@ -92,8 +97,8 @@ def user_input(prompt):
 # TEST
 def test():
     """Test functions."""
-    create("purple sox")
-    create("red cloak")
+    # create("purple sox")
+    # create("red cloak")
 
     # print(read(0))
     # print(read(1))
@@ -106,13 +111,13 @@ def test():
     # Your testing code here
     # ...
     # Call your new function with the appropriate value
-    select("U")
+    # select("C")
     # View the results
-    list_all_items()
+    # list_all_items()
     # Call function with new value
     # select("D")
     # View results
-    # list_all_items()
+    list_all_items()
 # Continue until all code is run
 
 
