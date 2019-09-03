@@ -13,8 +13,7 @@ def create(item):
 # READ
 def read(index):
     """Read code."""
-    item = checklist[index]
-    return item
+    return checklist[index]
 
 
 # UPDATE
@@ -45,7 +44,7 @@ def mark_completed(index):
     checklist[int(index)] = "{} {}".format("√", checklist[int(index)])
 
 
-# User Input
+# User Selection Input
 def select(function_code):
     """User selection code."""
     # Append item
@@ -79,12 +78,15 @@ def select(function_code):
         print("Unknown Option. Choose from list of approved actions.")
 
 
+# User Input
 def user_input(prompt):
     """Accept user input."""
     # the input function will display a message in the terminal
     # and wait for user input.
     user_input = input(prompt)
     return user_input
+    user_value = user_input("Please Enter a value:")
+    print(user_value)
 
 
 # TEST
@@ -93,29 +95,26 @@ def test():
     create("purple sox")
     create("red cloak")
 
-    print(read(0))
-    print(read(1))
+    # print(read(0))
+    # print(read(1))
 
-    update(0, "purple socks")
-    destroy(1)
+    # update(0, "purple socks")
+    # destroy(1)
 
-    print(read(0))
+    # print(read(0))
     # print(read(1))
     # Your testing code here
     # ...
     # Call your new function with the appropriate value
-    select("C")
+    select("U")
     # View the results
     list_all_items()
     # Call function with new value
-    select("R")
+    # select("D")
     # View results
-    list_all_items()
+    # list_all_items()
 # Continue until all code is run
 
-
-user_value = user_input("Please Enter a value:")
-print(user_value)
 
 # Run tests
 test()
