@@ -13,7 +13,7 @@ def create(item):
 # READ
 def read(index):
     """Read code."""
-    return checklist[index]
+    return checklist[int(index)]
 
 
 # UPDATE
@@ -53,10 +53,10 @@ def select(function_code):
         create(input_item)
 
     # Read item
-    # elif function_code == "R":
-    #    item_index = user_input("Index Number?: ")
+    elif function_code == "R":
+        item_index = user_input("Index Number?: ")
     # Remember that item_index must actually exist or our program will crash.
-    #    read(item_index)
+        read(item_index)
 
     # User UPDATE
     elif function_code == "U":
@@ -82,10 +82,10 @@ def select(function_code):
     elif function_code == "Q":
         # This is where we want to stop our loop
         return False
-
     # Catch all
     else:
         print("Unknown Option. Choose from list of approved actions.")
+    return True
 
 
 # User Input
@@ -95,6 +95,8 @@ def user_input(prompt):
     # and wait for user input.
     user_input = input(prompt)
     return user_input
+    user_value = user_input("Please Enter a value:")
+    print(user_value)
 
 
 # TEST
@@ -124,7 +126,7 @@ def user_input(prompt):
     # select("U")
     # View results
     # list_all_items()
-    # select("C")
+    # select("Q")
     # View results
     # list_all_items()
     # select("D")
@@ -133,8 +135,6 @@ def user_input(prompt):
     # select("P")
     # View results
     # list_all_items()
-    # user_value = user_input("Please Enter a value:")
-    # print(user_value)
 # Continue until all code is run
 
 
@@ -144,5 +144,5 @@ def user_input(prompt):
 running = True
 while running:
     selection = user_input(
-        "Press: A=add, C=mark item done, U=update, D=delete, & P=display list")
-    select(selection)
+        "Press:A=add;C=checkitem;U=update;D=delete;R=read;P=full list;Q=quit ")
+    running = select(selection)
